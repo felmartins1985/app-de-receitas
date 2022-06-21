@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import '../styles/login.css';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -16,10 +17,11 @@ export default function Login(props) {
   const regex = /\S+@\S+\.\S+/;
   const minLengthPass = 6;
   return (
-    <form>
-      <label htmlFor="login_email">
-        Email
+    <form className="loginForm">
+      <div className="loginContainer">
         <input
+          className="inputLogin"
+          placeholder="Email"
           data-testid="email-input"
           type="email"
           name="email"
@@ -27,10 +29,10 @@ export default function Login(props) {
           onChange={ ({ target: { value } }) => setEmail(value) }
           id="login_email"
         />
-      </label>
-      <label htmlFor="login_password">
-        Email
+
         <input
+          className="inputLogin"
+          placeholder="Password"
           data-testid="password-input"
           type="password"
           name="password"
@@ -38,15 +40,17 @@ export default function Login(props) {
           onChange={ ({ target: { value } }) => setPassword(value) }
           id="login_password"
         />
-      </label>
-      <button
-        type="submit"
-        onClick={ submit }
-        disabled={ !(password.length > minLengthPass && regex.test(email)) }
-        data-testid="login-submit-btn"
-      >
-        Enter
-      </button>
+
+        <button
+          className="loginBtn"
+          type="submit"
+          onClick={ submit }
+          disabled={ !(password.length > minLengthPass && regex.test(email)) }
+          data-testid="login-submit-btn"
+        >
+          Enter
+        </button>
+      </div>
     </form>
   );
 }

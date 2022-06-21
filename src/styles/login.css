@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.loginForm {
+  align-items: center;
+  background-color: #ea1d2c;
+  background-image: url('../images/bgLogin.png');
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.loginContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.inputLogin {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.75);
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 20px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.inputLogin:focus {
+  outline: none;
+}
+
+.loginBtn {
+  background-color: #e4685d;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.75);
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 10px 50px;
+  text-decoration: none;
+}
+
+.loginBtn:hover {
+  background-color: #eb675e;
+}
+
+.loginBtn:active {
+  position: relative;
+  top: 1px;
+}
