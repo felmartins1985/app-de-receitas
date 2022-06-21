@@ -1,8 +1,11 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import { useSelector } from 'react-redux';
 import Header from '../components/Header';
+import CardsFood from '../components/CardsFood';
 
 export default function Foods() {
+  const foods = useSelector((state) => state.foodReducer.foods);
   return (
     <div>
       <Header
@@ -11,7 +14,7 @@ export default function Foods() {
         searchIcon
         typeFood="food"
       />
-      Foods
+      <CardsFood cards={ foods } />
       <Footer />
     </div>
   );
