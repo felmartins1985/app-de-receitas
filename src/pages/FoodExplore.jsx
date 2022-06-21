@@ -1,7 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function FoodExplore() {
   return (
-    <div>FoodExplore</div>
+    <div>
+      <Header
+        profileIcon
+        title="Explore Foods"
+      />
+    </div>
   );
 }

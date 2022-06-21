@@ -1,7 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function DrinkExplore() {
   return (
-    <div>DrinkExplore</div>
+    <div>
+      <Header
+        profileIcon
+        title="Explore Drinks"
+      />
+    </div>
   );
 }
