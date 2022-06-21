@@ -7,6 +7,8 @@ body {
   align-items: center;
   background-color: #ea1d2c;
   background-image: url('../images/bgLogin.png');
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   height: 100vh;
