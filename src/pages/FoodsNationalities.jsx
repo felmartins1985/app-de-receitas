@@ -1,18 +1,15 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-export default function Foods() {
+export default function FoodsNationalities() {
   return (
     <div>
       <Header
         profileIcon
-        title="Foods"
+        title="Explore Nationalities"
         searchIcon
         typeFood="food"
       />
-      Foods
-      <Footer />
     </div>
   );
 }
