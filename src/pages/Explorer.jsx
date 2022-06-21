@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Explorer() {
   return (
@@ -8,6 +9,8 @@ export default function Explorer() {
         profileIcon
         title="Explore"
       />
+      explorar
+      <Footer />
     </div>
   );
 }

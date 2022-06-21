@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import CardsDrink from '../components/CardsDrink';
+
 
 export default function Drinks() {
   const drinks = useSelector((state) => state.drinkReducer.drinks);
@@ -13,7 +15,8 @@ export default function Drinks() {
         searchIcon
         typeFood="drink"
       />
-      <CardsDrink cards={ drinks } />
+    <CardsDrink cards={ drinks } />
+      <Footer />
     </div>
   );
 }

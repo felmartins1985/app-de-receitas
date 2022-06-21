@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function DrinkExplore() {
   return (
@@ -8,6 +9,8 @@ export default function DrinkExplore() {
         profileIcon
         title="Explore Drinks"
       />
+      Explorar Bebida
+      <Footer />
     </div>
   );
 }

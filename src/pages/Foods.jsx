@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import CardsFood from '../components/CardsFood';
@@ -14,6 +15,7 @@ export default function Foods() {
         typeFood="food"
       />
       <CardsFood cards={ foods } />
+      <Footer />
     </div>
   );
 }

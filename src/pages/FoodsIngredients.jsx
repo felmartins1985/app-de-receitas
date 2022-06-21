@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function FoodsIngredients() {
   return (
@@ -8,6 +9,7 @@ export default function FoodsIngredients() {
         profileIcon
         title="Explore Ingredients"
       />
+      <Footer />
     </div>
   );
 }
