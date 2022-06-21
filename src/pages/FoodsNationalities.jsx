@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../components/Header';
 
-export default function Foods() {
+export default function FoodsNationalities() {
   return (
     <div>
       <Header
         profileIcon
-        title="Foods"
+        title="Explore Nationalities"
         searchIcon
         typeFood="food"
       />

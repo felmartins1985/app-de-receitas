@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
 
-export default function Foods() {
+export default function Drinks() {
   return (
     <div>
       <Header
         profileIcon
-        title="Foods"
+        title="Drinks"
         searchIcon
-        typeFood="food"
+        typeFood="drink"
       />
     </div>
   );
