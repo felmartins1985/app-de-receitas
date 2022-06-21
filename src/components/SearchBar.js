@@ -1,18 +1,44 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { thunkFood } from '../redux/actions/index';
+import { useHistory } from 'react-router-dom';
+import fetchApiFood from '../services/foodApi';
+import fetchApiDrink from '../services/drinkApi';
+import { addFood, addDrink } from '../redux/actions';
 
-export default function SearchBar() {
+export default function SearchBar({ typeFood }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [radio, setRadio] = useState('');
   const [input, setInput] = useState('');
 
-  const sendRequestFoodApi = () => {
+  const sendRequestFoodApi = async () => {
     if (radio === 'first-letter' && radio.length > 1) {
       global.alert('Your search must have only 1 (one) character');
     }
-    dispatch(thunkFood(radio, input));
+    if (typeFood === 'food') {
+      const result = await fetchApiFood(radio, input);
+      console.log(result);
+      if (result === null) {
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      } else if (result.length === 1) {
+        history.push(`/foods/${result[0].idMeal}`);
+        dispatch(addFood(result));
+      } else {
+        dispatch(addFood(result));
+      }
+    } else {
+      const result = await fetchApiDrink(radio, input);
+      if (result === null) {
+        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      } else if (result.length === 1) {
+        history.push(`/drinks/${result[0].idDrink}`);
+        dispatch(addDrink(result));
+      } else {
+        dispatch(addDrink(result));
+      }
+    }
   };
   return (
     <div>
@@ -65,3 +91,10 @@ export default function SearchBar() {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  typeFood: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};

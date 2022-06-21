@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import profileIconImage from '../images/profileIcon.svg';
 import searchIconImage from '../images/searchIcon.svg';
+import CardsFood from './CardsFood';
+import CardsDrink from './CardsDrink';
 
 export default function Header({ profileIcon, title, searchIcon, typeFood }) {
   const [searchBar, setSearchBar] = useState(false);
   const history = useHistory();
+
+  const foods = useSelector((state) => state.foodReducer.foods);
+  const drinks = useSelector((state) => state.drinkReducer.drinks);
 
   const redirectProfile = () => {
     history.push('/profile');
@@ -46,6 +52,10 @@ export default function Header({ profileIcon, title, searchIcon, typeFood }) {
          )}
       </header>
       {searchBar && <SearchBar typeFood={ typeFood } />}
+      <div>
+        {typeFood === 'food'
+          ? <CardsFood cards={ foods } /> : <CardsDrink cards={ drinks } /> }
+      </div>
     </div>
   );
 }
