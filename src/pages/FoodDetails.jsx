@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function FoodDetails() {
   return (
-    <div>FoodDetails</div>
+    <div>
+      FoodDetails
+    </div>
   );
 }
