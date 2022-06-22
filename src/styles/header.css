@@ -1,3 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@600&family=Kdam+Thmor+Pro&family=League+Gothic&family=PT+Mono&display=swap') ;
+
 header {
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid darkgrey;
+  color: #ea1d2c;
   display: flex;
+  font-size: 30px;
+  height: 70px;
+  justify-content: space-around;
 }
+
+h2 {
+  font-family: League Gothic , sans-serif;
+}
+
+h3 {
+  color: #ea1d2c;
+  font-size: 35px;
+}
+
+/* https://stackoverflow.com/questions/22252472/
+how-to-change-the-color-of-an-svg-element */
+
+.headerImg {
+  filter: invert(18%)
+    sepia(98%)
+    saturate(3071%)
+    hue-rotate(345deg)
+    brightness(95%)
+    contrast(94%);
+}
+

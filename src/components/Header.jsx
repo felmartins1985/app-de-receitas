@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import profileIconImage from '../images/profileIcon.svg';
 import searchIconImage from '../images/searchIcon.svg';
+import '../styles/header.css';
 
 export default function Header({ profileIcon, title, searchIcon, typeFood }) {
   const [searchBar, setSearchBar] = useState(false);
@@ -16,7 +17,7 @@ export default function Header({ profileIcon, title, searchIcon, typeFood }) {
 
   return (
     <div>
-      <header>
+      <header className="header">
         {profileIcon
          && (
            <button
@@ -25,6 +26,7 @@ export default function Header({ profileIcon, title, searchIcon, typeFood }) {
              src={ profileIconImage }
            >
              <img
+               className="headerImg"
                data-testid="profile-top-btn"
                src={ profileIconImage }
                alt="profile Icon"
@@ -39,6 +41,7 @@ export default function Header({ profileIcon, title, searchIcon, typeFood }) {
              onClick={ () => setSearchBar(!searchBar) }
            >
              <img
+               className="headerImg"
                data-testid="search-top-btn"
                src={ searchIconImage }
                alt="search Icon"

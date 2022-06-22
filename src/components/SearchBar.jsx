@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import fetchApiFood from '../services/foodApi';
 import fetchApiDrink from '../services/drinkApi';
 import { addFood, addDrink } from '../redux/actions';
+import '../styles/header.css';
 
 export default function SearchBar({ typeFood }) {
   const dispatch = useDispatch();
@@ -41,46 +42,48 @@ export default function SearchBar({ typeFood }) {
     }
   };
   return (
-    <div>
+    <div className="searchContainer">
       <input
         type="text"
         placeholder="Search Recipe"
         data-testid="search-input"
         onChange={ ({ target }) => setInput(target.value) }
       />
-      <label htmlFor="ingredient-search-radio">
-        <input
-          type="radio"
-          data-testid="ingredient-search-radio"
-          id="ingredient-search-radio"
-          name="search-radio"
-          onChange={ ({ target }) => setRadio(target.value) }
-          value="ingredient"
-        />
-        Ingrediente
-      </label>
-      <label htmlFor="name-search-radio">
-        <input
-          type="radio"
-          data-testid="name-search-radio"
-          id="name-search-radio"
-          name="search-radio"
-          value="name"
-          onChange={ ({ target }) => setRadio(target.value) }
-        />
-        Name
-      </label>
-      <label htmlFor="first-letter-search-radio">
-        <input
-          type="radio"
-          data-testid="first-letter-search-radio"
-          id="first-letter-search-radio"
-          name="search-radio"
-          value="first-letter"
-          onChange={ ({ target }) => setRadio(target.value) }
-        />
-        First Letter
-      </label>
+      <div className="control-group">
+        <label htmlFor="ingredient-search-radio" className="control control-radio">
+          <input
+            type="radio"
+            data-testid="ingredient-search-radio"
+            id="ingredient-search-radio"
+            name="search-radio"
+            onChange={ ({ target }) => setRadio(target.value) }
+            value="ingredient"
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="name-search-radio" className="control control-radio">
+          <input
+            type="radio"
+            data-testid="name-search-radio"
+            id="name-search-radio"
+            name="search-radio"
+            value="name"
+            onChange={ ({ target }) => setRadio(target.value) }
+          />
+          Name
+        </label>
+        <label htmlFor="first-letter-search-radio" className="control control-radio">
+          <input
+            type="radio"
+            data-testid="first-letter-search-radio"
+            id="first-letter-search-radio"
+            name="search-radio"
+            value="first-letter"
+            onChange={ ({ target }) => setRadio(target.value) }
+          />
+          First Letter
+        </label>
+      </div>
       <button
         data-testid="exec-search-btn"
         type="button"
