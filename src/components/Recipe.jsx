@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchApiById } from '../services/foodApi';
 
 export default function Recipe() {
+  const [data, setData] = useState([]);
+
+  const { id } = useParams();
+
+  console.log('Este é o Id:', id);
+  useEffect(() => {
+    const getRecipe = async () => {
+      const recipe = await fetchApiById(id);
+      console.log('Recipe', recipe[0]);
+      setData(recipe);
+    };
+    getRecipe();
+  }, []);
+
+  console.log('data:', data);
+
   return (
     <div>
       Recipe
-      <img src="" alt="" data-testid="recipe-photo" />
+      <img src="data[0].strMealThumb" alt="" data-testid="recipe-photo" />
       <h2 data-testid="recipe-title">TITLE</h2>
       <button
         type="button"
