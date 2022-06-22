@@ -32,3 +32,112 @@ how-to-change-the-color-of-an-svg-element */
     contrast(94%);
 }
 
+.searchContainer {
+  align-items: center;
+  border-bottom: 1px solid darkgray;
+  display: flex;
+  flex-direction: row;
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  margin: 0 5px;
+}
+
+.inputSearch {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.75);
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 13px;
+  margin: 10px 5px;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.inputSearch:focus {
+  outline: none;
+}
+
+.searchBtn {
+  background-color: #ea1d2c;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(54, 54, 54, 0.75);
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana , Geneva , Tahoma , sans-serif;
+  font-size: 16px;
+  margin: 5px;
+  padding: 6px 72px;
+  text-decoration: none;
+}
+
+.control {
+  cursor: pointer;
+  display: block;
+  font-size: 15px;
+  margin-bottom: 5px;
+  padding-left: 26px;
+  padding-top: 1px;
+  position: relative;
+}
+
+.control input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.control_indicator {
+  background: #e6e6e6;
+  border: none;
+  box-shadow: 0 0 10px rgba(110, 110, 110, 0.75);
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  width: 20px;
+}
+
+.control-radio .control_indicator {
+  border-radius: 50%;
+}
+
+.control:hover input ~ .control_indicator, .control input:focus ~ .control_indicator {
+  background: #ccc;
+}
+
+.control input:checked ~ .control_indicator {
+  background: #ea1d2c;
+}
+
+.control input:disabled ~ .control_indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.control_indicator:after {
+  box-sizing: unset;
+  content: '';
+  display: none;
+  position: absolute;
+}
+
+.control-radio .control_indicator:after {
+  background: white;
+  border-radius: 50%;
+  height: 6px;
+  left: 7px;
+  top: 7px;
+  transition: background 250ms;
+  width: 6px;
+}
+
+.control input:checked ~ .control_indicator:after {
+  display: block;
+}
+
+.control-radio input:disabled ~ .control_indicator:after {
+  background: #7b7b7b;
+}
+

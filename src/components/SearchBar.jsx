@@ -43,54 +43,71 @@ export default function SearchBar({ typeFood }) {
   };
   return (
     <div className="searchContainer">
-      <input
-        type="text"
-        placeholder="Search Recipe"
-        data-testid="search-input"
-        onChange={ ({ target }) => setInput(target.value) }
-      />
+      <div>
+        <input
+          className="inputSearch"
+          type="text"
+          placeholder="Search Recipe"
+          data-testid="search-input"
+          onChange={ ({ target }) => setInput(target.value) }
+        />
+        <button
+          className="searchBtn"
+          data-testid="exec-search-btn"
+          type="button"
+          onClick={ sendRequestFoodApi }
+        >
+          Search
+        </button>
+      </div>
+
       <div className="control-group">
-        <label htmlFor="ingredient-search-radio" className="control control-radio">
+        <label
+          htmlFor="ingredient-search-radio"
+          data-testid="ingredient-search-radio"
+          className="control control-radio"
+        >
           <input
             type="radio"
-            data-testid="ingredient-search-radio"
             id="ingredient-search-radio"
             name="search-radio"
             onChange={ ({ target }) => setRadio(target.value) }
             value="ingredient"
           />
           Ingrediente
+          <div className="control_indicator" />
         </label>
-        <label htmlFor="name-search-radio" className="control control-radio">
+        <label
+          htmlFor="name-search-radio"
+          data-testid="name-search-radio"
+          className="control control-radio"
+        >
           <input
             type="radio"
-            data-testid="name-search-radio"
             id="name-search-radio"
             name="search-radio"
             value="name"
             onChange={ ({ target }) => setRadio(target.value) }
           />
           Name
+          <div className="control_indicator" />
         </label>
-        <label htmlFor="first-letter-search-radio" className="control control-radio">
+        <label
+          htmlFor="first-letter-search-radio"
+          data-testid="first-letter-search-radio"
+          className="control control-radio"
+        >
           <input
             type="radio"
-            data-testid="first-letter-search-radio"
             id="first-letter-search-radio"
             name="search-radio"
             value="first-letter"
             onChange={ ({ target }) => setRadio(target.value) }
           />
           First Letter
+          <div className="control_indicator" />
         </label>
       </div>
-      <button
-        data-testid="exec-search-btn"
-        type="button"
-        onClick={ sendRequestFoodApi }
-      >
-        Search
-      </button>
     </div>
   );
 }
