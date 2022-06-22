@@ -50,3 +50,13 @@ export const fetchApiFilterByCategory = async (category) => {
     console.log(error);
   }
 };
+
+export const fetchApiRandom = async () => {
+  try {
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    const data = await response.json();
+    return data.drinks[0].idDrink;
+  } catch (error) {
+    console.log(error);
+  }
+};
