@@ -8,7 +8,7 @@ import FoodDetails from './pages/FoodDetails';
 import DrinkDetails from './pages/DrinkDetails';
 import FoodProgress from './pages/FoodProgress';
 import DrinkProgress from './pages/DrinkProgress';
-import Explorer from './pages/Explorer';
+import Explore from './pages/Explore';
 import FoodExplore from './pages/FoodExplore';
 import DrinkExplore from './pages/DrinkExplore';
 import FoodsIngredients from './pages/FoodsIngredients';
@@ -38,7 +38,7 @@ function App() {
         />
         <Route exact path="/explore/foods" component={ FoodExplore } />
         <Route exact path="/explore/drinks" component={ DrinkExplore } />
-        <Route exact path="/explore" component={ Explorer } />
+        <Route exact path="/explore" component={ Explore } />
         <Route exact path="/profile" component={ Profile } />
         <Route path="/done-recipes" component={ DoneRecipes } />
         <Route path="/favorite-recipes" component={ FavoriteRecipes } />
