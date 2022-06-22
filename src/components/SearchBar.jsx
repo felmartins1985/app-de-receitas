@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import fetchApiFood from '../services/foodApi';
-import fetchApiDrink from '../services/drinkApi';
+import { fetchApiFood } from '../services/foodApi';
+import { fetchApiDrink } from '../services/drinkApi';
 import { addFood, addDrink } from '../redux/actions';
 import '../styles/header.css';
 
