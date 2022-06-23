@@ -4,11 +4,13 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CardsDrink from '../components/CardsDrink';
 import { fetchApiAllDrinks, fetchApiCategoriesDrinks,
-  fetchApiFilterByCategory } from '../services/drinkApi';
+  fetchApiFilterByCategory, fetchApiDrink } from '../services/drinkApi';
 import { addDrink } from '../redux/actions';
 
 export default function Drinks() {
   const drinks = useSelector((state) => state.drinkReducer.drinks);
+  const ingredientExplore = useSelector((state) => state.drinkReducer.ingredientExplore);
+
   const dispatch = useDispatch();
 
   const [categories, setCategories] = useState([]);
@@ -26,8 +28,18 @@ export default function Drinks() {
     setCategories(categoriesList);
   };
 
+  const filterByIngredientExplore = async () => {
+    const result = await fetchApiDrink('ingredient', ingredientExplore);
+    dispatch(addDrink(result));
+  };
+
   useEffect(() => {
-    callApiAndDispatch();
+    if (ingredientExplore !== '') {
+      console.log('alou');
+      filterByIngredientExplore();
+    } else {
+      callApiAndDispatch();
+    }
     callApiDrinkCategories();
   }, []);
 

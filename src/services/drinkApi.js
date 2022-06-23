@@ -61,11 +61,21 @@ export const fetchApiRandom = async () => {
   }
 };
 
-export const fetchApiIngredients = async () => {
+export const fetchDrinksIngredients = async () => {
   try {
-    const response = await fetch('www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
     const data = await response.json();
     return data.drinks;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchDrinksIngredientsImages = async (name) => {
+  try {
+    const response = await fetch(`https://www.thecocktaildb.com/images/ingredients/${name}-Medium.png`);
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
   }

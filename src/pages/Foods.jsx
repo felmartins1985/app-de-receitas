@@ -4,18 +4,26 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CardsFood from '../components/CardsFood';
 import { fetchApiAllFoods,
-  fetchApiCategoriesFood, fetchApiFilterByCategory } from '../services/foodApi';
+  fetchApiCategoriesFood,
+  fetchApiFilterByCategory, fetchApiFood } from '../services/foodApi';
 import { addFood } from '../redux/actions';
 
 export default function Foods() {
   const foods = useSelector((state) => state.foodReducer.foods);
+  const ingredientExplore = useSelector((state) => state.foodReducer.ingredientExplore);
   const dispatch = useDispatch();
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  // const [filtedFoods, setFiltedFoods] = useState([]);
 
   const callApiAndDispatch = async () => {
     const result = await fetchApiAllFoods();
+    dispatch(addFood(result));
+  };
+
+  const filterByIngredientExplore = async () => {
+    const result = await fetchApiFood('ingredient', ingredientExplore);
     dispatch(addFood(result));
   };
 
@@ -27,7 +35,12 @@ export default function Foods() {
   };
 
   useEffect(() => {
-    callApiAndDispatch();
+    if (ingredientExplore !== '') {
+      console.log('alou');
+      filterByIngredientExplore();
+    } else {
+      callApiAndDispatch();
+    }
     callApiFoodCategories();
   }, []);
 
