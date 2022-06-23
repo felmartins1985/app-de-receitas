@@ -59,9 +59,6 @@ Header.propTypes = {
   title: PropTypes.string.isRequired,
   searchIcon: PropTypes.bool,
   typeFood: PropTypes.string,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 Header.defaultProps = {
