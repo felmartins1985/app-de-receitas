@@ -13,11 +13,12 @@ header {
 
 h2 {
   font-family: League Gothic , sans-serif;
+  letter-spacing: 3px;
 }
 
 h3 {
   color: #ea1d2c;
-  font-size: 35px;
+  font-size: 20px;
 }
 
 /* https://stackoverflow.com/questions/22252472/
@@ -30,6 +31,7 @@ how-to-change-the-color-of-an-svg-element */
     hue-rotate(345deg)
     brightness(95%)
     contrast(94%);
+  width: 30px;
 }
 
 .searchContainer {
