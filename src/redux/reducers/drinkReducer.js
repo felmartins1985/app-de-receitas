@@ -1,7 +1,8 @@
-import { ADD_DRINK } from '../actions';
+import { ADD_DRINK, FILTER_INGREDIENT } from '../actions';
 
 const INITIAL_STATE = {
   drinks: [],
+  filterByIngredient: false,
 };
 
 const numberMaxDrinks = 11;
@@ -12,6 +13,10 @@ function drinkReducer(state = INITIAL_STATE, action) {
     return {
       ...state,
       drinks: action.payload.filter((_, index) => index <= numberMaxDrinks),
+    };
+  case FILTER_INGREDIENT:
+    return {
+      filterByIngredient: !state.filterByIngredient,
     };
   default:
     return state;
