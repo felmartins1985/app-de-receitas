@@ -1,8 +1,9 @@
-import { ADD_FOOD, FILTER_INGREDIENT } from '../actions';
+import { ADD_FOOD, FILTER_INGREDIENT, INGREDIENT_EXPLORE } from '../actions';
 
 const INITIAL_STATE = {
   foods: [],
   filterByIngredient: false,
+  ingredientExplore: '',
 };
 
 const numberMaxFoods = 11;
@@ -17,6 +18,10 @@ function foodReducer(state = INITIAL_STATE, action) {
   case FILTER_INGREDIENT:
     return {
       filterByIngredient: !state.filterByIngredient,
+    };
+  case INGREDIENT_EXPLORE:
+    return {
+      ingredientExplore: action.payload,
     };
   default:
     return state;

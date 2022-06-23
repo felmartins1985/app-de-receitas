@@ -1,3 +1,5 @@
+// const allFoods =
+
 const selectEndpointFood = (radio, input) => {
   switch (radio) {
   case 'ingredient':
@@ -70,11 +72,22 @@ export const fetchApiRandom = async () => {
   }
 };
 
-export const fetchApiIngredients = async () => {
+export const fetchFoodIngredients = async () => {
   try {
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
     const data = await response.json();
     return data.meals;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchFoodIngredientsImages = async (name) => {
+  try {
+    const response = await fetch(`https://www.themealdb.com/images/ingredients/${name}-Small.png`);
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
