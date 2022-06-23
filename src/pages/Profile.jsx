@@ -10,7 +10,7 @@ export default function Profile() {
 
   useEffect(() => {
     const result = JSON.parse(localStorage.getItem('user'));
-    setEmail(result.email);
+    setEmail(result?.email);
   }, []);
 
   const logoutAndClearStorage = () => {
