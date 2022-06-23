@@ -92,3 +92,25 @@ export const fetchFoodIngredientsImages = async (name) => {
     console.log(error);
   }
 };
+
+export const fetchNationalities = async () => {
+  try {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+    const data = await response.json();
+    // console.log(data);
+    return data.meals;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchFoodsByNationalities = async (name) => {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${name}`);
+    const data = await response.json();
+    // console.log(data);
+    return data.meals;
+  } catch (error) {
+    console.log(error);
+  }
+};
