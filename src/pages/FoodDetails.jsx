@@ -8,21 +8,30 @@ export default function FoodDetails() {
   const [ingredients, setIngredients] = useState([]);
   const [measure, setMeasure] = useState([]);
   const { id } = useParams();
+  const [isDone, setIsDone] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
 
   console.log('Este é o Id:', id);
   useEffect(() => {
     const getRecipe = async () => {
       const recipe = await fetchApiById(id);
       const entriesRecipe = Object.entries(recipe[0]);
-      const filteredIngredients = entriesRecipe
-        .filter((item) => item[0].includes('strIngredient') && item[1] !== '');
-      const filteredQuantity = entriesRecipe
-        .filter((item) => item[0].includes('strMeasure') && item[1] !== ' ');
+      const filteredIngredients = entriesRecipe.filter(
+        (item) => item[0].includes('strIngredient') && item[1] !== '',
+      );
+      const filteredQuantity = entriesRecipe.filter(
+        (item) => item[0].includes('strMeasure') && item[1] !== ' ',
+      );
       setIngredients(filteredIngredients);
       setMeasure(filteredQuantity);
       setData(recipe);
     };
     getRecipe();
+
+    const getLocalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
+    setIsDone(getLocalStorage.some((item) => item.id === id));
+    const getLocalStorage2 = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    setInProgress(`${id}` in getLocalStorage2.meals);
   }, []);
 
   console.log('data:', data);
@@ -36,30 +45,24 @@ export default function FoodDetails() {
       Recipe
       <img src={ data[0].strMealThumb } alt="" data-testid="recipe-photo" />
       <h2 data-testid="recipe-title">{data[0].strMeal}</h2>
-      <button
-        type="button"
-        data-testid="share-btn"
-      >
+      <button type="button" data-testid="share-btn">
         Share
       </button>
-      <button
-        type="button"
-        data-testid="favorite-btn"
-      >
+      <button type="button" data-testid="favorite-btn">
         Favorite
       </button>
       <p data-testid="recipe-category">{data[0].strCategory}</p>
       <h3>Ingredients:</h3>
       <div className="div-ingredients">
-        {measure.length > 0 && ingredients.map((ingredient, index) => (
-          <p
-            key={ ingredient[0] }
-            data-testid={ `${index}-ingredient-name-and-measure` }
-          >
-            {`${ingredient[1]} - ${measure[index][1]}`}
-
-          </p>))}
-
+        {measure.length > 0
+          && ingredients.map((ingredient, index) => (
+            <p
+              key={ ingredient[0] }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
+              {`${ingredient[1]} - ${measure[index][1]}`}
+            </p>
+          ))}
       </div>
       <h3>Instructions:</h3>
       <div>
@@ -83,12 +86,15 @@ export default function FoodDetails() {
         <h2>RECOMMENDED</h2>
         <DrinksCarousel />
       </div>
-      <button
-        type="button"
-        data-testid="start-recipe-btn"
-      >
-        Start Recipe
-      </button>
+      {(isDone && !inProgress) && (
+        <button type="button" data-testid="start-recipe-btn">
+          Start Recipe
+        </button>
+      )}
+      {(inProgress && !isDone) && (
+        <button type="button" data-testid="start-recipe-btn">
+          Continue Recipe
+        </button>)}
     </div>
   );
 }
